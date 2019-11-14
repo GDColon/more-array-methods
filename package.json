@@ -1,0 +1,22 @@
+{
+  "name": "more-array-methods",
+  "version": "1.0.0",
+  "description": "A very simple module for Node.js that adds some extra useful methods for arrays. Made out of complete boredom.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDColon/more-array-methods.git"
+  },
+  "keywords": [
+    "array"
+  ],
+  "author": "GDColon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GDColon/more-array-methods/issues"
+  },
+  "homepage": "https://github.com/GDColon/more-array-methods#readme"
+}
