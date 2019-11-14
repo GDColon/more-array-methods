@@ -1,118 +1,119 @@
 module.exports = function() {
 
-    Array.prototype.pick = function() {
-        return this[Math.floor(Math.random() * this.length)]
-    };
+	Array.prototype.pick = function() {
+		return this[Math.floor(Math.random() * this.length)]
+	}
 
-    Array.prototype.delete = function(i) {
-        if (!this[i] || isNaN(i)) return this
-        else return this.filter((x, y) => y != (+i))
-    }
+	Array.prototype.delete = function(i) {
+		if (!this[i] || isNaN(i)) return this
+		else return this.filter((_x, y) => y != (+i))
+	}
 
-    Array.prototype.remove = function(i, strict) {
-        let index = strict ? this.findIndex(x => x === i) : this.findIndex(x => x == i)
-        return this.delete(index)
-    }
+	Array.prototype.remove = function(i, strict) {
+		let index = strict ? this.findIndex(x => x === i) : this.findIndex(x => x == i)
+		return this.delete(index)
+	}
 
-    Array.prototype.purge = function(i, strict) {
-        if (strict) return this.filter(x => x !== i)
-        else return this.filter(x => x != i)
-    }
+	Array.prototype.purge = function(i, strict) {
+		if (strict) return this.filter(x => x !== i)
+		else return this.filter(x => x != i)
+	}
 
-    Array.prototype.ascend = function() {
-        let trash = this.filter(x => isNaN(x))
-        let numbers = this.filter(x => !isNaN(x))
-        return numbers.sort(function(a, b){return (+a)-(+b)}).concat(trash);
-    }
+	Array.prototype.ascend = function() {
+		let trash = this.filter(x => isNaN(x))
+		let numbers = this.filter(x => !isNaN(x))
+		return numbers.sort(function(a, b){return (+a)-(+b)}).concat(trash)
+	}
 
-    Array.prototype.descend = function() {
-        let trash = this.filter(x => isNaN(x))
-        let numbers = this.filter(x => !isNaN(x))
-        return numbers.sort(function(a, b){return (+b)-(+a)}).concat(trash);
-    }
+	Array.prototype.descend = function() {
+		let trash = this.filter(x => isNaN(x))
+		let numbers = this.filter(x => !isNaN(x))
+		return numbers.sort(function(a, b){return (+b)-(+a)}).concat(trash)
+	}
 
-    Array.prototype.unique = function() {
-        let unique = []
-        this.forEach(x => {if (!unique.includes(x)) unique.push(x)})
-        return unique
-    }
+	Array.prototype.unique = function() {
+		let unique = []
+		this.forEach(x => {if (!unique.includes(x)) unique.push(x)})
+		return unique
+	}
 
-    Array.prototype.toLowerCase = function() {
-        return this.map(x => typeof x == "string" ? x.toLowerCase() : x)
-    }
+	Array.prototype.toLowerCase = function() {
+		return this.map(x => typeof x == "string" ? x.toLowerCase() : x)
+	}
 
-    Array.prototype.toUpperCase = function() {
-        return this.map(x => typeof x == "string" ? x.toUpperCase() : x)
-    }
+	Array.prototype.toUpperCase = function() {
+		return this.map(x => typeof x == "string" ? x.toUpperCase() : x)
+	}
 
-    Array.prototype.sum = function() {
-        return this.filter(x => typeof x == "number").reduce((a, b) => a + b, 0)
-    }
+	Array.prototype.sum = function() {
+		return this.filter(x => typeof x == "number").reduce((a, b) => a + b, 0)
+	}
 
-    Array.prototype.average = function() {
-        return this.sum() / this.length
-    }
+	Array.prototype.average = function() {
+		return this.sum() / this.length
+	}
 
-    Array.prototype.stringify = function() {
-        return this.map(x => typeof x == "number" ? String(x) : x)
-    }
+	Array.prototype.stringify = function() {
+		return this.map(x => typeof x == "number" ? String(x) : x)
+	}
 
-    Array.prototype.numerify = function() {
-        return this.map(x => isNaN(x) ? x : Number(x))
-    }
+	Array.prototype.numerify = function() {
+		return this.map(x => isNaN(x) ? x : Number(x))
+	}
 
-    Array.prototype.clean = function() {
-        return this.filter(x => x || x == 0 || x == false)
-    }
+	Array.prototype.clean = function() {
+		return this.filter(x => x || x == 0 || x == false)
+	}
 
-    Array.prototype.group = function() {
-        let group = {}
-        this.forEach(x => group[x] ? group[x] += 1 : group[x] = 1)
-        return group
-    }
+	Array.prototype.group = function() {
+		let group = {}
+		this.forEach(x => group[x] ? group[x] += 1 : group[x] = 1)
+		return group
+	}
 
-    Array.prototype.most = function() {
-        let group = this.group()
-        let keys = Object.keys(group)
-        return keys.sort(function(a, b) {return group[b] - group[a]})[0]
-    }
+	Array.prototype.most = function() {
+		let group = this.group()
+		let keys = Object.keys(group)
+		return keys.sort(function(a, b) {return group[b] - group[a]})[0]
+	}
 
-    Array.prototype.middle = function(ceil) {
-        let len = (this.length / 2) - 0.5
-        if (ceil) return this[Math.ceil(len)]
-        else return this[Math.floor(len)]
-    }
+	Array.prototype.middle = function(ceil) {
+		let len = (this.length / 2) - 0.5
+		if (ceil) return this[Math.ceil(len)]
+		else return this[Math.floor(len)]
+	}
 
-    Array.prototype.insert = function (item, index) {
-        this.splice(isNaN(index) ? this.length : +index, 0, item);
-        return this;
-    };
+	Array.prototype.insert = function (item, index) {
+		this.splice(isNaN(index) ? this.length : +index, 0, item)
+		return this
+	}
 
-    Array.prototype.last = function() {
-        return this[this.length - 1]
-    }
+	Array.prototype.last = function() {
+		return this[this.length - 1]
+	}
 
-    Array.prototype.h = function (item, index) {
-        return this.map(x => "h")
-    };
+	Array.prototype.h = function () {
+		// eslint-disable-next-line no-unused-vars
+		return this.map(x => "h")
+	}
 
-    Array.prototype.shuffle = function(){
-        let length = this.length
-        let unshuffled = this
-        let shuffled = []
+	Array.prototype.shuffle = function(){
+		let length = this.length
+		let unshuffled = this
+		let shuffled = []
 
-        while (shuffled.length != length) {
-            let index = Math.floor(Math.random() * unshuffled.length);
-            shuffled.push(unshuffled[index])
-            unshuffled = unshuffled.delete(index)
-        }
+		while (shuffled.length != length) {
+			let index = Math.floor(Math.random() * unshuffled.length)
+			shuffled.push(unshuffled[index])
+			unshuffled = unshuffled.delete(index)
+		}
 
-        return shuffled;
-    };
+		return shuffled
+	}
 
-    Array.prototype.locate = function(func) {
-        if (typeof func == "string" || typeof func == "number") return {value: this.find(x => x == func), index: this.findIndex(x => x == func)}
-        else return {value: this.find(func), index: this.findIndex(func)}
-    }
+	Array.prototype.locate = function(func) {
+		if (typeof func == "string" || typeof func == "number") return {value: this.find(x => x == func), index: this.findIndex(x => x == func)}
+		else return {value: this.find(func), index: this.findIndex(func)}
+	}
 
 }
