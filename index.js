@@ -4,6 +4,10 @@ module.exports = function() {
         return this[Math.floor(Math.random() * this.length)];
     };
 
+    Array.prototype.certainPick = function (num1, num2) {
+        return this[Math.floor(Math.random() * num2) + num1]
+    }
+
     Array.prototype.delete = function(i) {
         return this.filter((x, y) => y !== (+i));
     };
@@ -90,6 +94,10 @@ module.exports = function() {
     Array.prototype.last = function() {
         return this[this.length - 1];
     };
+
+    Array.prototype.first = function () {
+        return this[this.length - this.length]
+    }
 
     Array.prototype.h = function () {
         return this.map(() => "h");
